@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Space | تصميمات العمالقة</title>
+    <title>Design Space | قمة التصميم الرقمي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -27,6 +27,7 @@
             overflow-x: hidden;
         }
 
+        /* تصميم الهيدر */
         .nav-container {
             position: fixed;
             top: 0;
@@ -45,6 +46,25 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .logo {
@@ -70,13 +90,20 @@
             width: 100%;
         }
 
+        /* قائمة التنقل */
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
         .nav-links a {
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 30px;
             background: rgba(26, 115, 232, 0.1);
             transition: 0.3s;
             text-decoration: none;
             color: var(--text-color);
+            font-weight: 500;
         }
 
         .nav-links a:hover {
@@ -84,6 +111,7 @@
             transform: scale(1.05);
         }
 
+        /* قسم الترحيب */
         .hero {
             height: 100vh;
             display: flex;
@@ -95,20 +123,15 @@
 
         .hero-content {
             text-align: center;
-            z-index: 1;
+            z-index: 2;
             padding: 2rem;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            text-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
-        }
-
-        .animated-text {
-            position: relative;
+        .animated-words {
             display: inline-block;
+            position: relative;
+            height: 80px;
+            overflow: hidden;
         }
 
         .animated-words span {
@@ -127,13 +150,31 @@
         .animated-words span:nth-child(3) { animation-delay: 6s; }
 
         @keyframes wordSwitch {
-            0% { opacity: 0; transform: translateY(20px); }
+            0% { opacity: 0; transform: translateY(30px); }
             10% { opacity: 1; transform: translateY(0); }
             30% { opacity: 1; transform: translateY(0); }
-            40% { opacity: 0; transform: translateY(-20px); }
+            40% { opacity: 0; transform: translateY(-30px); }
             100% { opacity: 0; }
         }
 
+        /* إعدادات متحركة */
+        .settings-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            z-index: 1001;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* الخدمات */
         .services {
             padding: 5rem 2rem;
             display: grid;
@@ -157,19 +198,31 @@
         .service-card:hover {
             transform: translateY(-10px);
             background: rgba(26, 115, 232, 0.1);
+            box-shadow: 0 0 30px rgba(26, 115, 232, 0.2);
         }
 
+        /* الفوتر */
         footer {
             background: rgba(0, 0, 0, 0.3);
-            padding: 2rem;
+            padding: 4rem 2rem 2rem;
             margin-top: 5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
         }
 
         .copyright {
             text-align: center;
             padding: 2rem;
             opacity: 0.8;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
@@ -177,16 +230,26 @@
                 font-size: 2.5rem;
             }
 
-            .services {
-                grid-template-columns: 1fr;
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
+    <i class="fas fa-cog settings-icon"></i>
+
     <header class="nav-container">
         <nav>
-            <a href="#" class="logo">DesignSpace</a>
+            <div class="logo-container">
+                <img src="logo.png" alt="شعار الشركة" class="logo-img">
+                <a href="#" class="logo">DesignSpace</a>
+            </div>
             <div class="nav-links">
                 <a href="about.html">من نحن</a>
                 <a href="#services">خدماتنا</a>
@@ -198,16 +261,15 @@
     <section class="hero">
         <div class="hero-content">
             <h1>
-                <span class="animated-text">
-                    <div class="animated-words">
-                        <span>تصميم أكثر مفاجئة</span>
-                        <span>تصميم أكثر قوة</span>
-                        <span>تصميم أكثر إبداعًا</span>
-                    </div>
-                </span>
+                <div class="animated-words">
+                    <span>تصميم أكثر مفاجئة</span>
+                    <span>تصميم أكثر قوة</span>
+                    <span>تصميم أكثر إبداعًا</span>
+                </div>
+                <br>للعالم الرقمي
             </h1>
-            <p>نحوّيل الأفكار إلى تجارب رقمية خالدة</p>
-            <a href="#contact" class="cta-button">ابدأ مشروعك الآن</a>
+            <p>نحوّل الأفكار إلى واقع ملموس</p>
+            <a href="#contact" class="cta-button">ابدأ رحلتك الإبداعية</a>
         </div>
     </section>
 
@@ -218,33 +280,29 @@
             <p>بناء هوية بصرية متكاملة تعبر عن شخصيتك</p>
         </div>
         <div class="service-card">
-            <i class="fas fa-ad fa-3x"></i>
-            <h3>تصميم الإعلانات</h3>
-            <p>تصاميم إعلانية مبتكرة لجذب العملاء</p>
-        </div>
-        <div class="service-card">
             <i class="fas fa-users fa-3x"></i>
             <h3>تصميم المشاهير</h3>
-            <p>هوية فريدة للشخصيات العامة</p>
+            <p>هوية فريدة للشخصيات العامة والمؤثرة</p>
         </div>
         <div class="service-card">
-            <i class="fas fa-magic fa-3x"></i>
-            <h3>تصميم السوشيال ميديا</h3>
-            <p>منشورات تفاعلية بجودة عالية</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-globe fa-3x"></i>
-            <h3>تصميم المواقع</h3>
-            <p>واجهات ويب حديثة وسريعة</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-mobile-alt fa-3x"></i>
-            <h3>تصميم التطبيقات</h3>
-            <p>واجهات تطبيقات جذابة وسهلة الاستخدام</p>
+            <i class="fas fa-ad fa-3x"></i>
+            <h3>تصميم المنشورات</h3>
+            <p>تصاميم إعلانية جذابة لوسائل التواصل</p>
         </div>
     </section>
 
     <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <h4>المقر الرئيسي</h4>
+                <p>الجزائر العاصمة - القبة<br>الحي الإداري، المبنى 12</p>
+            </div>
+            <div>
+                <h4>الاتصال</h4>
+                <p>الهاتف: <a href="tel:+213550123456">0550 123 456</a></p>
+                <p>الإيميل: <a href="mailto:contact@designspace.dz">contact@designspace.dz</a></p>
+            </div>
+        </div>
         <div class="copyright">
             © 2024 DesignSpace. جميع الحقوق محفوظة
         </div>
@@ -262,6 +320,10 @@
                 trigger: ".services",
                 start: "top 80%"
             }
+        });
+
+        document.querySelector('.settings-icon').addEventListener('click', () => {
+            alert('لوحة الإعدادات قريبًا!');
         });
 
         window.addEventListener('scroll', () => {
