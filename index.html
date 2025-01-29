@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Space | تصميمات العمالقة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --main-color: #0a1f3d;
+            --accent-color: #1a73e8;
+            --text-color: #f0f4fc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #020a1a, #0a1f3d);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* تصميم الهيدر المتحرك */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 31, 61, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: 0.3s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: 0.3s;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        /* قسم الترحيب مع تأثيرات ثلاثية الأبعاد */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
+        }
+
+        /* تصميم البطاقات المتحركة */
+        .services {
+            padding: 5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 115, 232, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(26, 115, 232, 0.2), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+            animation: borderFlow 3s linear infinite;
+        }
+
+        @keyframes borderFlow {
+            0% { transform: rotate(45deg) translateX(-50%); }
+            100% { transform: rotate(45deg) translateX(50%); }
+        }
+
+        /* تصميم متجاوب للجوال */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* تأثيرات النصوص */
+        .animated-text {
+            background: linear-gradient(45deg, #1a73e8, #8ab4f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px rgba(26, 115, 232, 0.5); }
+            to { text-shadow: 0 0 20px rgba(26, 115, 232, 0.8); }
+        }
+
+        /* الأزرار التفاعلية */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 1rem;
+            border-radius: 30px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="nav-container">
+        <nav>
+            <a href="#" class="logo">DesignSpace</a>
+            <div class="nav-links">
+                <a href="#about">من نحن</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#contact">تواصل معنا</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1><span class="animated-text">ابتكار</span> تصميمي<br>للعالم الرقمي</h1>
+            <p>نحوّيل الأفكار إلى تجارب رقمية خالدة</p>
+            <a href="#contact" class="cta-button">ابدأ مشروعك الآن</a>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="service-card">
+            <i class="fas fa-palette fa-3x"></i>
+            <h3>تصميم واجهات المستخدم</h3>
+            <p>تصاميم حديثة تتوافق مع أحدث معايير UI/UX</p>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-mobile-alt fa-3x"></i>
+            <h3>تطبيقات الجوال</h3>
+            <p>بناء تطبيقات هجينة وأصلية لكل المنصات</p>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-rocket fa-3x"></i>
+            <h3>الحلول المتكاملة</h3>
+            <p>أنظمة إدارة محتوى مخصصة لاحتياجات عملك</p>
+        </div>
+    </section>
+
+    <script>
+        // تأثيرات GSAP
+        gsap.from(".nav-container", {duration: 1, y: -100, opacity: 0});
+        gsap.from(".hero-content", {duration: 1.5, y: 100, opacity: 0});
+        gsap.from(".service-card", {
+            duration: 1,
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: ".services",
+                start: "top 80%"
+            }
+        });
+
+        // إدارة التمرير
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav-container');
+            if (window.scrollY > 100) {
+                nav.style.background = "rgba(10, 31, 61, 0.98)";
+            } else {
+                nav.style.background = "rgba(10, 31, 61, 0.95)";
+            }
+        });
+    </script>
+</body>
+</html>
