@@ -27,7 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* تحسينات الهيدر */
         .nav-container {
             position: fixed;
             top: 0;
@@ -90,7 +89,6 @@
             width: 100%;
         }
 
-        /* تحسينات القائمة */
         .nav-links {
             display: flex;
             gap: 25px;
@@ -128,7 +126,6 @@
             transform: scale(1.05);
         }
 
-        /* قسم الترحيب */
         .hero {
             height: 100vh;
             display: flex;
@@ -163,7 +160,6 @@
             to { text-shadow: 0 0 20px rgba(26, 115, 232, 0.8); }
         }
 
-        /* البطاقات */
         .services {
             padding: 5rem 2rem;
             display: grid;
@@ -211,7 +207,6 @@
             100% { transform: rotate(45deg) translateX(50%); }
         }
 
-        /* الفوتر - تم التحسين مع الحفاظ على العناصر */
         footer {
             background: rgba(0, 0, 0, 0.3);
             padding: 4rem 2rem 2rem;
@@ -283,6 +278,60 @@
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
         }
+
+        .about-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 115, 232, 0.1);
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
     </style>
 </head>
 <body>
@@ -293,14 +342,15 @@
                 <a href="#" class="logo">DesignSpace</a>
             </div>
             <div class="nav-links">
-                <a href="#about">من نحن</a>
+                <a href="#home">الرئيسية</a>
+                <a href="#about">حولنا</a>
                 <a href="#services">خدماتنا</a>
                 <a href="#contact">تواصل معنا</a>
             </div>
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="hero-content">
             <h1><span class="animated-text">إبداع</span> تصميمي<br>للعالم الرقمي</h1>
             <p>نحول الأفكار إلى تصاميم خالدة</p>
@@ -308,7 +358,7 @@
         </div>
     </section>
 
-    <section class="services" id="services">
+    <section id="services" class="services">
         <div class="service-card">
             <i class="fas fa-palette fa-3x"></i>
             <h3>تصميم الهويات</h3>
@@ -323,6 +373,28 @@
             <i class="fas fa-ad fa-3x"></i>
             <h3>تصميم المنشورات</h3>
             <p>تصاميم إعلانية جذابة لوسائل التواصل</p>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>حولنا</h2>
+        <p>نحن فريق من المحترفين المبدعين الذين يعملون بجد لتقديم أفضل الحلول التصميمية لعملائنا. نؤمن بأن التصميم الجيد يمكن أن يغير العالم.</p>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="team1.jpg" alt="فريق العمل">
+                <h3>محمد علي</h3>
+                <p>مصمم جرافيك</p>
+            </div>
+            <div class="team-member">
+                <img src="team2.jpg" alt="فريق العمل">
+                <h3>فاطمة أحمد</h3>
+                <p>مصممة واجهات</p>
+            </div>
+            <div class="team-member">
+                <img src="team3.jpg" alt="فريق العمل">
+                <h3>علي حسن</h3>
+                <p>مطور ويب</p>
+            </div>
         </div>
     </section>
 
@@ -370,4 +442,4 @@
         });
     </script>
 </body>
-    </html>
+            </html>
