@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Space | تصميمات إبداعية</title>
+    <title>Design Space | تصميمات العمالقة</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -14,33 +14,90 @@
             --text-color: #f0f4fc;
         }
 
-        /* إضافة ستايل للوگو */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #020a1a, #0a1f3d);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* التعديلات الجديدة للوگو */
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
         .logo-img {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             border: 2px solid var(--accent-color);
         }
 
-        /* تعديل شكل القائمة */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 31, 61, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            transition: 0.3s;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: 0.3s;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        /* التعديلات الجديدة للقائمة */
         .nav-links {
             display: flex;
             gap: 25px;
         }
 
         .nav-links a {
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 30px;
             background: rgba(26, 115, 232, 0.1);
             transition: 0.3s;
             text-decoration: none;
             color: var(--text-color);
+            font-weight: 500;
         }
 
         .nav-links a:hover {
@@ -48,10 +105,126 @@
             transform: scale(1.05);
         }
 
-        /* إضافة فوتر */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
+        }
+
+        .services {
+            padding: 5rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 115, 232, 0.1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(26, 115, 232, 0.2), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+            animation: borderFlow 3s linear infinite;
+        }
+
+        @keyframes borderFlow {
+            0% { transform: rotate(45deg) translateX(-50%); }
+            100% { transform: rotate(45deg) translateX(50%); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .animated-text {
+            background: linear-gradient(45deg, #1a73e8, #8ab4f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px rgba(26, 115, 232, 0.5); }
+            to { text-shadow: 0 0 20px rgba(26, 115, 232, 0.8); }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 1rem;
+            border-radius: 30px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
+        }
+
+        /* التعديلات الجديدة للفوتر */
         footer {
             background: rgba(0, 0, 0, 0.3);
-            padding: 2rem;
+            padding: 4rem 2rem 2rem;
             margin-top: 5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -69,25 +242,30 @@
             text-align: center;
             padding: 2rem;
             opacity: 0.8;
+            font-size: 0.9rem;
         }
 
-        /* تعديل البطاقات */
-        .service-card h3 {
-            margin: 1rem 0;
+        .footer-content h4 {
             color: var(--accent-color);
+            margin-bottom: 1rem;
         }
 
-        .service-card i {
-            margin-bottom: 1rem;
+        .footer-content a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-content a:hover {
+            color: var(--accent-color);
         }
     </style>
 </head>
 <body>
-
     <header class="nav-container">
         <nav>
             <div class="logo-container">
-                <img src="logo.png" alt="Logo" class="logo-img">
+                <img src="logo.png" alt="اللوجو" class="logo-img">
                 <a href="#" class="logo">DesignSpace</a>
             </div>
             <div class="nav-links">
@@ -98,46 +276,74 @@
         </nav>
     </header>
 
-    <!-- باقي المحتوى كما هو مع تعديل النصوص -->
-
-    <section class="services">
-        <div class="service-card">
-            <i class="fas fa-paint-brush fa-3x"></i>
-            <h3>تصميم الصفحات</h3>
-            <p>تصميم احترافي لمواقع الويب والمدونات الشخصية</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-users fa-3x"></i>
-            <h3>تصميم للمشاهير</h3>
-            <p>هوية بصرية مميزة للشخصيات العامة والمؤثرة</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-bullhorn fa-3x"></i>
-            <h3>تصميم المنشورات</h3>
-            <p>إنفوجرافيك وتصاميم إعلانية جاذبة للانتباه</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1><span class="animated-text">إبداع</span> تصميمي<br>للعالم الرقمي</h1>
+            <p>نحول الأفكار إلى تصاميم خالدة</p>
+            <a href="#contact" class="cta-button">ابدأ مشروعك الآن</a>
         </div>
     </section>
 
-    <footer>
+    <section class="services" id="services">
+        <div class="service-card">
+            <i class="fas fa-object-group fa-3x"></i>
+            <h3>تصميم الصفحات</h3>
+            <p>تصميم مواقع ويب احترافية بتجربة مستخدم فريدة</p>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-user-tie fa-3x"></i>
+            <h3>تصاميم شخصية</h3>
+            <p>هوية بصرية مميزة للأفراد والمشاهير</p>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-ad fa-3x"></i>
+            <h3>تصميم المنشورات</h3>
+            <p>تصاميم إعلانية جذابة لوسائل التواصل الاجتماعي</p>
+        </div>
+    </section>
+
+    <footer id="contact">
         <div class="footer-content">
             <div>
-                <h4>العنوان</h4>
-                <p>الجزائر العاصمة، الحي الإداري</p>
+                <h4>المقر الرئيسي</h4>
+                <p>الجزائر العاصمة - القبة<br>الحي الإداري، المبنى 12</p>
             </div>
             <div>
                 <h4>الاتصال</h4>
-                <p>الهاتف: <a href="tel:+213123456789">+213 123 456 789</a></p>
+                <p>الهاتف: <a href="tel:+213550123456">0550 123 456</a></p>
+                <p>الإيميل: <a href="mailto:contact@designspace.dz">contact@designspace.dz</a></p>
             </div>
             <div>
                 <h4>مواعيد العمل</h4>
-                <p>الأحد - الخميس<br>8 صباحًا - 5 مساءً</p>
+                <p>السبت - الخميس<br>8 صباحًا - 5 مساءً</p>
             </div>
         </div>
         <div class="copyright">
-            © 2024 DesignSpace. جميع الحقوق محفوظة
+            © 2024 DesignSpace. جميع الحقوق محفوظة.<br>
+            تطوير وتصميم بواسطة فريق DesignSpace
         </div>
     </footer>
 
-    <!-- باقي السكريبتات بدون تعديل -->
+    <script>
+        gsap.from(".nav-container", {duration: 1, y: -100, opacity: 0});
+        gsap.from(".hero-content", {duration: 1.5, y: 100, opacity: 0});
+        gsap.from(".service-card", {
+            duration: 1,
+            opacity: 0,
+            y: 50,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: ".services",
+                start: "top 80%"
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav-container');
+            nav.style.background = window.scrollY > 100 
+                ? "rgba(10, 31, 61, 0.98)" 
+                : "rgba(10, 31, 61, 0.95)";
+        });
+    </script>
 </body>
     </html>
