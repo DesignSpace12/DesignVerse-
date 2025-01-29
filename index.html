@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Space | تصميمات العمالقة</title>
+    <title>Design Space | قمة التصميم الرقمي</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -27,20 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* التعديلات الجديدة للوگو */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-color);
-        }
-
+        /* تصميم الهيدر المعدّل */
         .nav-container {
             position: fixed;
             top: 0;
@@ -59,6 +46,25 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-color);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .logo {
@@ -84,7 +90,7 @@
             width: 100%;
         }
 
-        /* التعديلات الجديدة للقائمة */
+        /* قائمة التنقل المُحسّنة */
         .nav-links {
             display: flex;
             gap: 25px;
@@ -98,6 +104,23 @@
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
         }
 
         .nav-links a:hover {
@@ -105,6 +128,7 @@
             transform: scale(1.05);
         }
 
+        /* قسم الترحيب مع النصوص المتحركة */
         .hero {
             height: 100vh;
             display: flex;
@@ -116,8 +140,9 @@
 
         .hero-content {
             text-align: center;
-            z-index: 1;
+            z-index: 2;
             padding: 2rem;
+            position: relative;
         }
 
         .hero h1 {
@@ -127,6 +152,52 @@
             text-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
         }
 
+        .animated-words {
+            display: inline-block;
+            position: relative;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .animated-words span {
+            position: absolute;
+            opacity: 0;
+            white-space: nowrap;
+            background: linear-gradient(45deg, #1a73e8, #8ab4f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: wordSwitch 12s infinite;
+        }
+
+        .animated-words span:nth-child(1) { animation-delay: 0s; }
+        .animated-words span:nth-child(2) { animation-delay: 3s; }
+        .animated-words span:nth-child(3) { animation-delay: 6s; }
+        .animated-words span:nth-child(4) { animation-delay: 9s; }
+
+        @keyframes wordSwitch {
+            0%, 20% { opacity: 0; transform: translateY(30px); }
+            5%, 15% { opacity: 1; transform: translateY(0); }
+            25%, 100% { opacity: 0; transform: translateY(-30px); }
+        }
+
+        /* إعدادات متحركة */
+        .settings-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            z-index: 1001;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* البطاقات المعدّلة */
         .services {
             padding: 5rem 2rem;
             display: grid;
@@ -144,84 +215,16 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(26, 115, 232, 0.3);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
             background: rgba(26, 115, 232, 0.1);
+            box-shadow: 0 0 30px rgba(26, 115, 232, 0.2);
         }
 
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(26, 115, 232, 0.2), transparent);
-            transform: rotate(45deg);
-            transition: 0.5s;
-        }
-
-        .service-card:hover::before {
-            animation: borderFlow 3s linear infinite;
-        }
-
-        @keyframes borderFlow {
-            0% { transform: rotate(45deg) translateX(-50%); }
-            100% { transform: rotate(45deg) translateX(50%); }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .services {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                gap: 15px;
-            }
-
-            .nav-links a {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-        }
-
-        .animated-text {
-            background: linear-gradient(45deg, #1a73e8, #8ab4f8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes textGlow {
-            from { text-shadow: 0 0 10px rgba(26, 115, 232, 0.5); }
-            to { text-shadow: 0 0 20px rgba(26, 115, 232, 0.8); }
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            margin: 1rem;
-            border-radius: 30px;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
-        }
-
-        /* التعديلات الجديدة للفوتر */
+        /* الفوتر المعدّل */
         footer {
             background: rgba(0, 0, 0, 0.3);
             padding: 4rem 2rem 2rem;
@@ -245,23 +248,29 @@
             font-size: 0.9rem;
         }
 
-        .footer-content h4 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
 
-        .footer-content a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: 0.3s;
-        }
+            .nav-links {
+                gap: 10px;
+            }
 
-        .footer-content a:hover {
-            color: var(--accent-color);
+            .nav-links a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .animated-words {
+                height: 60px;
+            }
         }
     </style>
 </head>
 <body>
+    <i class="fas fa-cog settings-icon"></i>
+
     <header class="nav-container">
         <nav>
             <div class="logo-container">
@@ -269,7 +278,7 @@
                 <a href="#" class="logo">DesignSpace</a>
             </div>
             <div class="nav-links">
-                <a href="#about">من نحن</a>
+                <a href="about.html">من نحن</a>
                 <a href="#services">خدماتنا</a>
                 <a href="#contact">تواصل معنا</a>
             </div>
@@ -278,53 +287,66 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1><span class="animated-text">إبداع</span> تصميمي<br>للعالم الرقمي</h1>
-            <p>نحول الأفكار إلى تصاميم خالدة</p>
-            <a href="#contact" class="cta-button">ابدأ مشروعك الآن</a>
+            <h1>
+                <span class="animated-text">إبداع تصميمي</span><br>
+                <div class="animated-words">
+                    <span>تصميم مبتكر</span>
+                    <span>هوية فريدة</span>
+                    <span>إبداع رقمي</span>
+                    <span>تميّز مرئي</span>
+                </div>
+            </h1>
+            <p>نحوّل الأفكار إلى واقع ملموس في العالم الرقمي</p>
+            <a href="#contact" class="cta-button">ابدأ رحلتك الإبداعية</a>
         </div>
     </section>
 
     <section class="services" id="services">
         <div class="service-card">
-            <i class="fas fa-object-group fa-3x"></i>
-            <h3>تصميم الصفحات</h3>
-            <p>تصميم مواقع ويب احترافية بتجربة مستخدم فريدة</p>
+            <i class="fas fa-palette fa-3x"></i>
+            <h3>تصميم الهويات</h3>
+            <p>بناء هوية بصرية متكاملة تعبر عن شخصيتك</p>
         </div>
         <div class="service-card">
-            <i class="fas fa-user-tie fa-3x"></i>
-            <h3>تصاميم شخصية</h3>
-            <p>هوية بصرية مميزة للأفراد والمشاهير</p>
+            <i class="fas fa-rocket fa-3x"></i>
+            <h3>تصميم السوشيال ميديا</h3>
+            <p>منشورات جذابة تواكب أحدث التصاميم العالمية</p>
         </div>
         <div class="service-card">
-            <i class="fas fa-ad fa-3x"></i>
-            <h3>تصميم المنشورات</h3>
-            <p>تصاميم إعلانية جذابة لوسائل التواصل الاجتماعي</p>
+            <i class="fas fa-globe fa-3x"></i>
+            <h3>تصميم المواقع</h3>
+            <p>مواقع ويب تفاعلية بتجربة مستخدم فريدة</p>
         </div>
     </section>
 
     <footer id="contact">
         <div class="footer-content">
             <div>
-                <h4>المقر الرئيسي</h4>
-                <p>الجزائر العاصمة - القبة<br>الحي الإداري، المبنى 12</p>
+                <h4>الموقع</h4>
+                <p>الجزائر العاصمة<br>الحي الإداري، شارع التصميم</p>
             </div>
             <div>
                 <h4>الاتصال</h4>
-                <p>الهاتف: <a href="tel:+213550123456">0550 123 456</a></p>
-                <p>الإيميل: <a href="mailto:contact@designspace.dz">contact@designspace.dz</a></p>
+                <p>+213 123 456 789</p>
+                <p>contact@designspace.dz</p>
             </div>
             <div>
-                <h4>مواعيد العمل</h4>
-                <p>السبت - الخميس<br>8 صباحًا - 5 مساءً</p>
+                <h4>التواصل الاجتماعي</h4>
+                <p>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                </p>
             </div>
         </div>
         <div class="copyright">
             © 2024 DesignSpace. جميع الحقوق محفوظة.<br>
-            تطوير وتصميم بواسطة فريق DesignSpace
+            تم التطوير بواسطة فريق DesignSpace
         </div>
     </footer>
 
     <script>
+        // تأثيرات GSAP
         gsap.from(".nav-container", {duration: 1, y: -100, opacity: 0});
         gsap.from(".hero-content", {duration: 1.5, y: 100, opacity: 0});
         gsap.from(".service-card", {
@@ -338,11 +360,18 @@
             }
         });
 
+        // إدارة التمرير
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('.nav-container');
             nav.style.background = window.scrollY > 100 
                 ? "rgba(10, 31, 61, 0.98)" 
                 : "rgba(10, 31, 61, 0.95)";
+        });
+
+        // إعدادات الأيقونة
+        document.querySelector('.settings-icon').addEventListener('click', () => {
+            // يمكن إضافة وظيفة الإعدادات هنا
+            alert('قريبًا: لوحة التحكم الإعدادات!');
         });
     </script>
 </body>
