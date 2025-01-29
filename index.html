@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="mainPage">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Space | تصميمات العمالقة</title>
+    <title>Design Space | قمة التصميم</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -25,6 +25,22 @@
             background: linear-gradient(45deg, #020a1a, #0a1f3d);
             color: var(--text-color);
             overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, 
+                rgba(26, 115, 232, 0.1) 0%, 
+                transparent 60%);
+            animation: pulse 8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.1; }
         }
 
         .nav-container {
@@ -74,21 +90,6 @@
             position: relative;
         }
 
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--accent-color);
-            transition: 0.3s;
-        }
-
-        .logo:hover::after {
-            width: 100%;
-        }
-
         .nav-links {
             display: flex;
             gap: 25px;
@@ -106,112 +107,99 @@
             overflow: hidden;
         }
 
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .nav-links a:hover::before {
-            left: 100%;
-        }
-
         .nav-links a:hover {
             background: var(--accent-color);
             transform: scale(1.05);
         }
 
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 1;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            text-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
-        }
-
-        .animated-text {
-            background: linear-gradient(45deg, #1a73e8, #8ab4f8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes textGlow {
-            from { text-shadow: 0 0 10px rgba(26, 115, 232, 0.5); }
-            to { text-shadow: 0 0 20px rgba(26, 115, 232, 0.8); }
-        }
-
-        .services {
-            padding: 5rem 2rem;
+        .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .service-card {
+        .team-card {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
+            border-radius: 20px;
             padding: 2rem;
-            transition: 0.3s;
-            cursor: pointer;
+            transition: 0.4s;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(26, 115, 232, 0.3);
+            border: 2px solid transparent;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(26, 115, 232, 0.1);
-            box-shadow: 0 0 30px rgba(26, 115, 232, 0.2);
-        }
-
-        .service-card::before {
+        .team-card::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(26, 115, 232, 0.2), transparent);
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(26, 115, 232, 0.3), 
+                transparent);
             transform: rotate(45deg);
-            transition: 0.5s;
+            animation: borderFlow 6s linear infinite;
         }
 
-        .service-card:hover::before {
-            animation: borderFlow 3s linear infinite;
+        .team-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 40px rgba(26, 115, 232, 0.2);
         }
 
-        @keyframes borderFlow {
-            0% { transform: rotate(45deg) translateX(-50%); }
-            100% { transform: rotate(45deg) translateX(50%); }
+        .team-card-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(10, 31, 61, 0.9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
         }
 
-        footer {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 4rem 2rem 2rem;
+        .member-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent-color);
+            transition: 0.3s;
+        }
+
+        .member-image:hover {
+            transform: rotate(360deg);
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        .member-role {
+            background: rgba(26, 115, 232, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio {
+            line-height: 1.8;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .advanced-footer {
+            background: linear-gradient(45deg, 
+                rgba(10, 31, 61, 0.9), 
+                rgba(10, 31, 61, 0.7));
+            padding: 4rem 2rem;
             margin-top: 5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
 
         .footer-content {
@@ -219,38 +207,73 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             text-align: center;
         }
 
-        .footer-item {
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            width: 80px;
             transition: 0.3s;
         }
 
-        .footer-item:hover {
-            transform: translateY(-5px);
-            background: rgba(26, 115, 232, 0.1);
+        .footer-logo:hover {
+            transform: rotate(15deg);
         }
 
-        .copyright {
-            text-align: center;
-            padding: 2rem;
-            opacity: 0.8;
-            font-size: 0.9rem;
+        .contact-info p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .social-media {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-media a {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        .social-media a:hover {
+            color: var(--accent-color);
+        }
+
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: rgba(26, 115, 232, 0.2);
+            border: 2px solid var(--accent-color);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .services {
-                grid-template-columns: 1fr;
-            }
-
             .nav-links {
                 gap: 15px;
             }
@@ -259,178 +282,140 @@
                 padding: 10px 15px;
                 font-size: 0.9rem;
             }
-        }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            margin: 1rem;
-            border-radius: 30px;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(26, 115, 232, 0.5);
-        }
-
-        .about-section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--accent-color);
-        }
-
-        .about-section p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .team-member {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-            background: rgba(26, 115, 232, 0.1);
-        }
-
-        .team-member img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-        }
-
-        .team-member h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-member p {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.8);
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
+
+    <div class="lang-switcher">
+        <button class="lang-btn" onclick="toggleLanguage()">EN/AR</button>
+    </div>
+
     <header class="nav-container">
         <nav>
             <div class="logo-container">
-                <img src="logo.png" alt="شعار الشركة" class="logo-img">
+                <img src="logo.png" class="logo-img" alt="شعار الشركة">
                 <a href="#" class="logo">DesignSpace</a>
             </div>
             <div class="nav-links">
                 <a href="#home">الرئيسية</a>
-                <a href="#about">حولنا</a>
-                <a href="#services">خدماتنا</a>
+                <a href="#team">فريقنا</a>
                 <a href="#contact">تواصل معنا</a>
             </div>
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1><span class="animated-text">إبداع</span> تصميمي<br>للعالم الرقمي</h1>
-            <p>نحول الأفكار إلى تصاميم خالدة</p>
-            <a href="#contact" class="cta-button">ابدأ مشروعك الآن</a>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="service-card">
-            <i class="fas fa-palette fa-3x"></i>
-            <h3>تصميم الهويات</h3>
-            <p>بناء هوية بصرية متكاملة تعبر عن شخصيتك</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-users fa-3x"></i>
-            <h3>تصميم المشاهير</h3>
-            <p>هوية فريدة للشخصيات العامة والمؤثرة</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-ad fa-3x"></i>
-            <h3>تصميم المنشورات</h3>
-            <p>تصاميم إعلانية جذابة لوسائل التواصل</p>
-        </div>
-    </section>
-
-    <section id="about" class="about-section">
-        <h2>حولنا</h2>
-        <p>نحن فريق من المحترفين المبدعين الذين يعملون بجد لتقديم أفضل الحلول التصميمية لعملائنا. نؤمن بأن التصميم الجيد يمكن أن يغير العالم.</p>
+    <section id="team" class="team-section">
         <div class="team-grid">
-            <div class="team-member">
-                <img src="team1.jpg" alt="فريق العمل">
-                <h3>محمد علي</h3>
-                <p>مصمم جرافيك</p>
+            <!-- المشرف -->
+            <div class="team-card">
+                <div class="team-card-content">
+                    <img src="abdulwahhab.jpg" class="member-image" alt="عبدالوهاب يعقوب">
+                    <h3 class="member-name">عبدالوهاب يعقوب</h3>
+                    <span class="member-role">المشرف العام</span>
+                    <p class="member-bio">
+                        قائد فريق التصميم الرقمي بخبرة 12 عامًا، 
+                        حاصل على جوائز عالمية في الإبداع الرقمي،
+                        متخصص في استراتيجيات العلامات التجارية
+                        وبناء الهويات البصرية الفريدة.
+                    </p>
+                </div>
             </div>
-            <div class="team-member">
-                <img src="team2.jpg" alt="فريق العمل">
-                <h3>فاطمة أحمد</h3>
-                <p>مصممة واجهات</p>
+
+            <!-- المدير -->
+            <div class="team-card">
+                <div class="team-card-content">
+                    <img src="mahdi.jpg" class="member-image" alt="عبدالوهاب مهدي">
+                    <h3 class="member-name">عبدالوهاب مهدي</h3>
+                    <span class="member-role">المدير التنفيذي</span>
+                    <p class="member-bio">
+                        صاحب مشروع DsG
+                      على قيادة الفريق بكفاءة عالية،
+                        وقدرة على حل المشكلات المعقدة.
+                    </p>
+                </div>
             </div>
-            <div class="team-member">
-                <img src="team3.jpg" alt="فريق العمل">
-                <h3>علي حسن</h3>
-                <p>مطور ويب</p>
+
+            <!-- العامل الجديد -->
+            <div class="team-card">
+                <div class="team-card-content">
+                    <img src="ali.jpg" class="member-image" alt="علي حسين">
+                    <h3 class="member-name">نريد عامل اخر</h3>
+                    <span class="member-role">مطور الواجهات تصميم</span>
+                    <p class="member-bio">
+                        مبرمج محترف في مجال تطوير الواجهات الأمامية،
+                        متخصص في تقنيات JavaScript الحديثة،
+                        لديه قدرة فائقة على تحويل التصاميم
+                        إلى تجارب تفاعلية متميزة.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <footer class="advanced-footer" id="contact">
         <div class="footer-content">
-            <div class="footer-item">
-                <h4>المقر الرئيسي</h4>
-                <p>الجزائر العاصمة - القبة<br>الحي الإداري، المبنى 12</p>
+            <div class="footer-brand">
+                <img src="logo-small.png" class="footer-logo" alt="الشعار الصغير">
+                <h3>DesignSpace</h3>
+                <p>الريادة في التصميم منذ 2012</p>
             </div>
-            <div class="footer-item">
-                <h4>الاتصال</h4>
-                <p>الهاتف: <a href="tel:+213550123456">0550 123 456</a></p>
-                <p>الإيميل: <a href="mailto:contact@designspace.dz">contact@designspace.dz</a></p>
+            
+            <div class="contact-info">
+                <h4>معلومات الاتصال</h4>
+                <p><i class="fas fa-map-marker-alt"></i>الجزائر العاصمة، شارع الإبداع</p>
+                <p><i class="fas fa-phone"></i>+213 06 59 69 69 44</p>
+                <p><i class="fas fa-envelope"></i>info@designspace.com</p>
             </div>
-            <div class="footer-item">
-                <h4>مواعيد العمل</h4>
-                <p>السبت - الخميس<br>8 صباحًا - 5 مساءً</p>
+
+            <div class="social-media">
+                <h4>تابعنا</h4>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
             </div>
-        </div>
-        <div class="copyright">
-            © 2024 DesignSpace. جميع الحقوق محفوظة.<br>
-            تطوير وتصميم بواسطة فريق DesignSpace
         </div>
     </footer>
 
     <script>
-        gsap.from(".nav-container", {duration: 1, y: -100, opacity: 0});
-        gsap.from(".hero-content", {duration: 1.5, y: 100, opacity: 0});
-        gsap.from(".service-card", {
+        let currentLang = 'ar';
+        const translations = {
+            ar: {
+                home: "الرئيسية",
+                team: "فريقنا",
+                contact: "تواصل معنا",
+                // ... ترجمات أخرى ...
+            },
+            en: {
+                home: "Home",
+                team: "Our Team",
+                contact: "Contact",
+                // ... English translations ...
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.getElementById('mainPage').dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('.nav-links a')[0].textContent = translations[currentLang].home;
+            document.querySelectorAll('.nav-links a')[1].textContent = translations[currentLang].team;
+            document.querySelectorAll('.nav-links a')[2].textContent = translations[currentLang].contact;
+        }
+
+        gsap.from(".team-card", {
             duration: 1,
             opacity: 0,
             y: 50,
-            stagger: 0.2,
+            stagger: 0.3,
             scrollTrigger: {
-                trigger: ".services",
-                start: "top 80%"
+                trigger: ".team-section",
+                start: "top center"
             }
         });
 
@@ -442,4 +427,4 @@
         });
     </script>
 </body>
-            </html>
+                                  </html>
