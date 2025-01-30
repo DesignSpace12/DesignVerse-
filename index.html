@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Galaxy | قمة الإبداع</title>
+    <title>Design Space | تصميمات المستقبل</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         :root {
-            --main-bg: #0a0f1e;
+            --main-bg: #020a1a;
             --accent: #1a73e8;
-            --text-color: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.1);
+            --text: #f0f4fc;
+            --glow: rgba(26, 115, 232, 0.5);
         }
 
         * {
@@ -24,21 +23,22 @@
         }
 
         body {
-            background: linear-gradient(45deg, var(--main-bg), #08142e);
-            color: var(--text-color);
+            background: linear-gradient(135deg, var(--main-bg), #0a1f3d);
+            color: var(--text);
             overflow-x: hidden;
         }
 
+        /* ✅ تحسين الهيدر */
         .nav-container {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(10, 15, 30, 0.9);
+            background: rgba(10, 31, 61, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             transition: 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         nav {
@@ -50,26 +50,13 @@
             padding: 0 2rem;
         }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
         .nav-links a {
-            padding: 12px 25px;
+            padding: 12px 20px;
             border-radius: 30px;
             background: rgba(26, 115, 232, 0.1);
-            transition: 0.3s;
             text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
+            color: var(--text);
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
@@ -77,68 +64,106 @@
             transform: scale(1.05);
         }
 
+        /* ✅ قسم الترحيب */
         .hero {
-            height: 90vh;
+            height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            flex-direction: column;
-            font-size: 2rem;
-            font-weight: 700;
         }
 
-        .changing-text {
+        .hero h1 {
+            font-size: 3.5rem;
+            text-shadow: 0 0 20px var(--glow);
+        }
+
+        .animated-text {
             color: var(--accent);
-            font-size: 2.5rem;
-            margin-top: 1rem;
-            height: 50px;
+            animation: flicker 1.5s infinite alternate;
         }
 
-        .team-grid {
+        @keyframes flicker {
+            from { opacity: 0.7; }
+            to { opacity: 1; }
+        }
+
+        /* ✅ تحسين البطاقات */
+        .services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: auto;
         }
 
-        .team-card {
-            background: var(--card-bg);
-            border-radius: 20px;
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
             padding: 2rem;
+            border-radius: 15px;
             text-align: center;
+            border: 2px solid var(--glow);
             transition: 0.3s;
-            box-shadow: 0 0 20px rgba(26, 115, 232, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .team-card:hover {
-            transform: scale(1.05);
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(26, 115, 232, 0.2), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
         }
 
-        .member-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--accent);
+        .service-card:hover {
+            background: rgba(26, 115, 232, 0.1);
+            box-shadow: 0 0 30px var(--glow);
         }
 
-        .member-name {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-top: 1rem;
+        .service-card:hover::before {
+            animation: borderFlow 3s linear infinite;
         }
 
-        .footer {
-            background: rgba(10, 15, 30, 0.9);
-            padding: 3rem;
+        /* ✅ قسم "من نحن" */
+        .about {
             text-align: center;
-            margin-top: 4rem;
+            padding: 4rem;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 3rem 0;
+            border-radius: 15px;
         }
 
-        .footer p {
+        /* ✅ تحسين الفوتر */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .copyright {
             opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* ✅ زر التفاعل */
+        .cta-button {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--glow);
         }
     </style>
 </head>
@@ -146,60 +171,50 @@
 
     <header class="nav-container">
         <nav>
-            <a href="#" class="logo">Design Galaxy</a>
+            <a href="#" class="logo">DesignSpace</a>
             <div class="nav-links">
-                <a href="#">الرئيسية</a>
-                <a href="#">فريقنا</a>
-                <a href="#">تواصل معنا</a>
+                <a href="#about">من نحن</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#contact">تواصل معنا</a>
             </div>
         </nav>
     </header>
 
     <section class="hero">
-        <p>نحن الأفضل في التصميم والإبداع</p>
-        <div class="changing-text"></div>
-    </section>
-
-    <section class="team-grid">
-        <div class="team-card" data-aos="fade-up">
-            <img src="user1.jpg" class="member-image" alt="عضو الفريق">
-            <h3 class="member-name">أحمد صالح</h3>
-            <p>مطور واجهات إبداعية</p>
-        </div>
-
-        <div class="team-card" data-aos="fade-up">
-            <img src="user2.jpg" class="member-image" alt="عضو الفريق">
-            <h3 class="member-name">ليلى خالد</h3>
-            <p>خبيرة في التصاميم الرقمية</p>
-        </div>
-
-        <div class="team-card" data-aos="fade-up">
-            <img src="user3.jpg" class="member-image" alt="عضو الفريق">
-            <h3 class="member-name">يوسف نبيل</h3>
-            <p>مبدع في العلامات التجارية</p>
+        <div class="hero-content">
+            <h1><span class="animated-text" id="changing-text">إبداع</span> تصميمي<br>للمستقبل</h1>
+            <p>نحول الأفكار إلى تصاميم خالدة</p>
+            <a href="#contact" class="cta-button">ابدأ مشروعك الآن</a>
         </div>
     </section>
 
-    <footer class="footer">
-        <p>© 2025 جميع الحقوق محفوظة - Design Galaxy</p>
-        <p>الاتصال بنا: info@designgalaxy.com</p>
+    <section class="services" id="services">
+        <div class="service-card"><i class="fas fa-palette fa-3x"></i><h3>تصميم الهويات</h3></div>
+        <div class="service-card"><i class="fas fa-users fa-3x"></i><h3>تصميم المشاهير</h3></div>
+        <div class="service-card"><i class="fas fa-ad fa-3x"></i><h3>تصميم الإعلانات</h3></div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>من نحن</h2>
+        <p>فريق تصميم مبدع يقدم تصاميم مستقبلية بأعلى جودة.</p>
+    </section>
+
+    <footer id="contact">
+        <p>للتواصل: contact@designspace.dz | هاتف: 0550 123 456</p>
+        <div class="copyright">© 2024 DesignSpace. جميع الحقوق محفوظة.</div>
     </footer>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        AOS.init();
-
-        const texts = ["الإبداع هو مستقبلنا", "تصاميم تناسب كل العصور", "نحول الأفكار إلى واقع"];
+        gsap.from(".nav-container", {duration: 1, y: -100, opacity: 0});
+        gsap.from(".hero-content", {duration: 1.5, y: 100, opacity: 0});
+        
+        const texts = ["إبداع", "ابتكار", "ثورة في التصميم"];
         let index = 0;
-
-        function changeText() {
-            document.querySelector(".changing-text").textContent = texts[index];
+        setInterval(() => {
+            document.getElementById("changing-text").innerText = texts[index];
             index = (index + 1) % texts.length;
-        }
-
-        setInterval(changeText, 3000);
-        changeText();
+        }, 2000);
     </script>
 
 </body>
-</html>
+    </html>
