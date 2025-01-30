@@ -3,24 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Galaxy | مجرة التصميم</title>
-
-    <!-- خطوط وأيقونات -->
+    <title>Design Galaxy | قمة الإبداع</title>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-
-    <!-- مكتبات التحريك -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://unpkg.com/typed.js@2.0.16"></script>
-
     <style>
         :root {
-            --main-bg: #020a1a;
+            --main-bg: #0a0f1e;
             --accent: #1a73e8;
-            --text: #f0f4fc;
+            --text-color: #ffffff;
             --card-bg: rgba(255, 255, 255, 0.1);
-            --neon: #00f7ff;
         }
 
         * {
@@ -28,35 +21,24 @@
             margin: 0;
             padding: 0;
             font-family: 'Tajawal', sans-serif;
-            transition: 0.3s;
         }
 
         body {
-            background: radial-gradient(circle at 50% 50%, rgba(26, 115, 232, 0.1) 0%, transparent 60%);
-            color: var(--text);
+            background: linear-gradient(45deg, var(--main-bg), #08142e);
+            color: var(--text-color);
             overflow-x: hidden;
         }
 
-        /* تأثيرات خلفية متحركة */
-        .bg-animation {
-            position: fixed;
-            width: 100vw;
-            height: 100vh;
-            background: url('https://source.unsplash.com/1600x900/?galaxy,space') no-repeat center center/cover;
-            filter: brightness(0.3);
-            z-index: -1;
-        }
-
-        /* شريط التنقل */
         .nav-container {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(2, 10, 26, 0.8);
+            z-index: 1000;
+            background: rgba(10, 15, 30, 0.9);
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: 0.3s ease-in-out;
+            transition: 0.3s;
         }
 
         nav {
@@ -71,121 +53,96 @@
         .logo {
             font-size: 2rem;
             font-weight: 800;
-            color: var(--neon);
-            text-shadow: 0 0 10px var(--neon);
+            color: var(--accent);
             text-decoration: none;
         }
 
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
         .nav-links a {
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 30px;
-            background: var(--card-bg);
+            background: rgba(26, 115, 232, 0.1);
+            transition: 0.3s;
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-color);
             font-weight: 500;
         }
 
         .nav-links a:hover {
-            background: var(--neon);
-            color: black;
+            background: var(--accent);
+            transform: scale(1.05);
         }
 
-        /* نص متغير */
-        .changing-text {
-            font-size: 1.8rem;
+        .hero {
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            margin-top: 120px;
+            flex-direction: column;
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--neon);
-            text-shadow: 0 0 15px var(--neon);
         }
 
-        /* قسم الفريق */
-        .team-section {
-            padding: 6rem 2rem;
+        .changing-text {
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-top: 1rem;
+            height: 50px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
         }
 
         .team-card {
             background: var(--card-bg);
+            border-radius: 20px;
             padding: 2rem;
-            border-radius: 15px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 20px var(--hover-effect);
-            transition: transform 0.4s ease-in-out;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(26, 115, 232, 0.3);
         }
 
         .team-card:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 40px var(--neon);
+            transform: scale(1.05);
         }
 
-        .team-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, var(--neon), transparent);
-            opacity: 0.2;
-            transform: rotate(30deg);
-            transition: 0.5s;
-        }
-
-        .team-card:hover::before {
-            top: 0;
-            left: 0;
-            opacity: 0.3;
+        .member-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
         }
 
         .member-name {
             font-size: 1.5rem;
-            color: var(--neon);
+            color: var(--accent);
+            margin-top: 1rem;
         }
 
-        /* الفوتر */
         .footer {
-            background: var(--main-bg);
-            padding: 4rem 2rem;
+            background: rgba(10, 15, 30, 0.9);
+            padding: 3rem;
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
 
-        .contact-info p {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-
-        .social-links a {
-            font-size: 1.5rem;
-            color: var(--text);
-            margin: 0 10px;
-        }
-
-        .social-links a:hover {
-            color: var(--neon);
-        }
-
-        .rights {
-            margin-top: 2rem;
-            font-size: 0.9rem;
+        .footer p {
             opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <div class="bg-animation"></div>
 
     <header class="nav-container">
         <nav>
@@ -198,32 +155,51 @@
         </nav>
     </header>
 
-    <div class="changing-text">
-        <span id="typed"></span>
-    </div>
+    <section class="hero">
+        <p>نحن الأفضل في التصميم والإبداع</p>
+        <div class="changing-text"></div>
+    </section>
 
-    <section class="team-section">
+    <section class="team-grid">
         <div class="team-card" data-aos="fade-up">
-            <h3 class="member-name">مستخدم رقم 1</h3>
-            <p>خبير في تصميم الواجهات وتجربة المستخدم.</p>
+            <img src="user1.jpg" class="member-image" alt="عضو الفريق">
+            <h3 class="member-name">أحمد صالح</h3>
+            <p>مطور واجهات إبداعية</p>
+        </div>
+
+        <div class="team-card" data-aos="fade-up">
+            <img src="user2.jpg" class="member-image" alt="عضو الفريق">
+            <h3 class="member-name">ليلى خالد</h3>
+            <p>خبيرة في التصاميم الرقمية</p>
+        </div>
+
+        <div class="team-card" data-aos="fade-up">
+            <img src="user3.jpg" class="member-image" alt="عضو الفريق">
+            <h3 class="member-name">يوسف نبيل</h3>
+            <p>مبدع في العلامات التجارية</p>
         </div>
     </section>
 
     <footer class="footer">
-        <p class="rights">© 2025 جميع الحقوق محفوظة.</p>
+        <p>© 2025 جميع الحقوق محفوظة - Design Galaxy</p>
+        <p>الاتصال بنا: info@designgalaxy.com</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // تأثير النص المتغير
-        new Typed("#typed", {
-            strings: ["نحن أقوى المصممين", "تصميمنا لا مثيل له", "الإبداع بلا حدود"],
-            typeSpeed: 50,
-            backSpeed: 30,
-            loop: true
-        });
-
-        // تأثيرات عند التمرير
         AOS.init();
+
+        const texts = ["الإبداع هو مستقبلنا", "تصاميم تناسب كل العصور", "نحول الأفكار إلى واقع"];
+        let index = 0;
+
+        function changeText() {
+            document.querySelector(".changing-text").textContent = texts[index];
+            index = (index + 1) % texts.length;
+        }
+
+        setInterval(changeText, 3000);
+        changeText();
     </script>
+
 </body>
-            </html>
+</html>
