@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexusDesign | تصميمات احترافية</title>
+    <title>NexusDesign | تصميمات احترافية للشركات الكبرى</title>
     
     <!-- المكتبات الأساسية -->
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <style>
         /* الأساسيات */
         :root {
-            --primary-color: #2A2F4F;
-            --secondary-color: #917FB3;
-            --accent-color: #E5BEEC;
-            --text-color: #FDE2F3;
+            --primary-color: #1A1A2E; /* لون أساسي داكن */
+            --secondary-color: #0F3460; /* لون ثانوي */
+            --accent-color: #E94560; /* لون مميز */
+            --text-color: #F5F5F5; /* لون النصوص */
         }
 
         * {
@@ -27,14 +28,14 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
             color: var(--text-color);
             line-height: 1.8;
         }
 
         /* الهيدر المتحسن */
         .header {
-            background: rgba(42, 47, 79, 0.95);
+            background: rgba(26, 26, 46, 0.95);
             padding: 1rem;
             position: fixed;
             width: 100%;
@@ -65,7 +66,7 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: var(--secondary-color);
+            background: var(--accent-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -113,7 +114,7 @@
         .hero-title {
             font-size: 4rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #E5BEEC, #917FB3);
+            background: linear-gradient(45deg, #E94560, #FF6B6B);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: slideIn 1s ease-out;
@@ -122,6 +123,12 @@
         @keyframes slideIn {
             from { transform: translateX(-50px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
         }
 
         /* خدمات */
@@ -146,7 +153,7 @@
         .service-card:hover {
             transform: translateY(-10px);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(229, 190, 236, 0.1);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.1);
         }
 
         .service-icon {
@@ -173,6 +180,27 @@
         .footer-section h3 {
             color: var(--accent-color);
             margin-bottom: 1.5rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* تجاوبية */
@@ -205,8 +233,8 @@
     <main>
         <section class="hero">
             <div class="hero-content" data-aos="fade-up">
-                <h1 class="hero-title">تصميمات رقمية<br>تغير المفاهيم</h1>
-                <p>نحوّل الأفكار إلى واقع ملموس بتقنيات حديثة وتصاميم مبتكرة</p>
+                <h1 class="hero-title">تصميمات احترافية<br>للشركات الكبرى</h1>
+                <p class="hero-subtitle">نحن نعمل في الجزائر فقط، نقدم تصميمات إعلانية ومنشورات وهويات بصرية متميزة.</p>
                 
                 <div class="services">
                     <div class="service-card">
@@ -216,9 +244,15 @@
                     </div>
                     
                     <div class="service-card">
-                        <i class="fas fa-mobile-alt service-icon"></i>
-                        <h3>تطبيقات الجوال</h3>
-                        <p>تصميم واجهات مستخدم تفاعلية لتجربة استخدام فريدة</p>
+                        <i class="fas fa-ad service-icon"></i>
+                        <h3>تصميم الإعلانات</h3>
+                        <p>إعلانات جذابة ومبتكرة لتعزيز حضورك في السوق</p>
+                    </div>
+
+                    <div class="service-card">
+                        <i class="fas fa-newspaper service-icon"></i>
+                        <h3>تصميم المنشورات</h3>
+                        <p>منشورات احترافية لوسائل التواصل الاجتماعي</p>
                     </div>
                 </div>
             </div>
@@ -228,8 +262,9 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>اتصل بنا</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</p>
-                    <p><i class="fas fa-phone"></i> +966 123 456 789</p>
+                    <p><i class="fas fa-map-marker-alt"></i> الجزائر العاصمة، الجزائر</p>
+                    <p><i class="fas fa-phone"></i> +213 123 456 789</p>
+                    <p><i class="fas fa-envelope"></i> contact@nexusdesign.dz</p>
                 </div>
                 
                 <div class="footer-section">
@@ -264,4 +299,4 @@
         }
     </script>
 </body>
-                                                             </html>
+                        </html>
