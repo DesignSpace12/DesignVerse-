@@ -3,326 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaDesign | الريادة في التصميم</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;800&display=swap" rel="stylesheet">
+    <title>NexusDesign | تصميمات احترافية</title>
+    
+    <!-- المكتبات الأساسية -->
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
+        /* الأساسيات */
         :root {
-            --main-color: #0a1f3d;
-            --accent-color: #1a73e8;
-            --text-color: #f0f4fc;
+            --primary-color: #2A2F4F;
+            --secondary-color: #917FB3;
+            --accent-color: #E5BEEC;
+            --text-color: #FDE2F3;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Tajawal', sans-serif;
+            box-sizing: border-box;
+            font-family: 'Almarai', sans-serif;
         }
 
         body {
-            background: linear-gradient(45deg, #020a1a, #0a1f3d);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: var(--text-color);
-            overflow-x: hidden;
+            line-height: 1.8;
         }
 
-        /* أنيميشن الخلفية */
-        .particles {
+        /* الهيدر المتحسن */
+        .header {
+            background: rgba(42, 47, 79, 0.95);
+            padding: 1rem;
             position: fixed;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            background: radial-gradient(circle, 
-                rgba(26,115,232,0.1) 0%,
-                transparent 70%);
-            animation: pulse 8s infinite;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.1; }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
-        /* شعار مخصص */
-        .logo-container {
+        /* زر تبديل اللغة */
+        .lang-switch {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .lang-switch:hover {
+            background: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* القسم الرئيسي */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 15px;
-            transition: 0.3s;
-        }
-
-        .logo-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            background: var(--accent-color);
-            mask: url('logo-shape.svg');
-            transition: 0.5s;
-            animation: logoFloat 4s ease-in-out infinite;
-        }
-
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* قائمة هامبرجر */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        .bar {
-            width: 25px;
-            height: 3px;
-            background: var(--text-color);
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-
-        /* تصميم حديث للفريق */
-        .team-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 4rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .member-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 25px;
-            padding: 2rem;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-        }
-
-        .member-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
-        }
-
-        /* تصميم متقدم للفوتر */
-        .super-footer {
-            background: linear-gradient(45deg, 
-                rgba(10, 31, 61, 0.95), 
-                rgba(10, 31, 61, 0.85));
-            padding: 4rem 2rem;
-            margin-top: 5rem;
-            position: relative;
-            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            padding: 8rem 2rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .contact-card {
-            background: rgba(255,255,255,0.05);
+        .hero-content {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #E5BEEC, #917FB3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* خدمات */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            margin: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.08);
             padding: 2rem;
             border-radius: 20px;
             transition: 0.3s;
+            border: 1px solid transparent;
         }
 
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(26,115,232,0.2);
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(229, 190, 236, 0.1);
         }
 
-        /* نظام التبديل بين اللغات */
-        .lang-switcher {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 1rem;
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
         }
 
-        .lang-btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            background: rgba(26,115,232,0.2);
-            border: 2px solid var(--accent-color);
-            color: var(--text-color);
-            cursor: pointer;
-            transition: 0.3s;
+        /* فوتر متطور */
+        .footer {
+            background: var(--primary-color);
+            padding: 4rem 2rem;
+            margin-top: 5rem;
         }
 
-        .lang-btn.active {
-            background: var(--accent-color);
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
         }
 
-        /* تصميم متجاوب */
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* تجاوبية */
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
+            .hero-title {
+                font-size: 2.5rem;
             }
 
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                background: rgba(10,31,61,0.95);
+            .nav-container {
                 flex-direction: column;
-                padding: 2rem;
-                transition: 0.3s;
-            }
-
-            .nav-active {
-                right: 0;
-            }
-
-            .bar.active:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 6px);
-            }
-
-            .bar.active:nth-child(2) {
-                opacity: 0;
-            }
-
-            .bar.active:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -6px);
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="particles"></div>
-
-    <div class="lang-switcher">
-        <button class="lang-btn active" onclick="changeLanguage('ar')">العربية</button>
-        <button class="lang-btn" onclick="changeLanguage('en')">English</button>
-    </div>
-
-    <header class="nav-container">
-        <nav>
-            <div class="logo-container">
-                <div class="logo-img"></div>
-                <h1 class="logo">NovaDesign</h1>
-            </div>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-drafting-compass"></i>
+                </div>
+                NexusDesign
+            </a>
             
-            <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-
-            <div class="nav-links">
-                <a href="#home">الرئيسية</a>
-                <a href="#portfolio">معرض الأعمال</a>
-                <a href="#contact">تواصل معنا</a>
-            </div>
+            <button class="lang-switch" onclick="toggleLanguage()">EN</button>
         </nav>
     </header>
 
     <main>
-        <!-- قسم معرض الأعمال -->
-        <section id="portfolio" class="portfolio-section">
-            <div class="team-showcase">
-                <!-- مثال تصميم 1 -->
-                <div class="member-card" data-aos="zoom-in">
-                    <div class="design-preview" style="background-image: url('design1.jpg')"></div>
-                    <h3>تصميم الهوية البصرية</h3>
-                    <p>تصميم متكامل لعلامة تجارية حديثة بألوان مبتكرة</p>
-                </div>
-
-                <!-- مثال تصميم 2 -->
-                <div class="member-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="design-preview" style="background-image: url('design2.jpg')"></div>
-                    <h3>واجهة تطبيق جوال</h3>
-                    <p>تصميم واجهة مستخدم لتطبيق ريادة الأعمال</p>
-                </div>
-
-                <!-- مثال تصميم 3 -->
-                <div class="member-card" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="design-preview" style="background-image: url('design3.jpg')"></div>
-                    <h3>موقع إلكتروني تفاعلي</h3>
-                    <p>تصميم موقع شركة تقنية بتجربة مستخدم فريدة</p>
+        <section class="hero">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">تصميمات رقمية<br>تغير المفاهيم</h1>
+                <p>نحوّل الأفكار إلى واقع ملموس بتقنيات حديثة وتصاميم مبتكرة</p>
+                
+                <div class="services">
+                    <div class="service-card">
+                        <i class="fas fa-palette service-icon"></i>
+                        <h3>تصميم الهويات</h3>
+                        <p>بناء هوية بصرية متكاملة تعبر عن شخصية علامتك التجارية</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt service-icon"></i>
+                        <h3>تطبيقات الجوال</h3>
+                        <p>تصميم واجهات مستخدم تفاعلية لتجربة استخدام فريدة</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- قسم الاتصال المتقدم -->
-        <footer class="super-footer" id="contact">
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <h3><i class="fas fa-map-marker-alt"></i> المقر الرئيسي</h3>
-                    <p>الرياض، حي المالية<br>الطابق 12، مبنى الإبداع</p>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>اتصل بنا</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</p>
+                    <p><i class="fas fa-phone"></i> +966 123 456 789</p>
                 </div>
-
-                <div class="contact-card">
-                    <h3><i class="fas fa-phone-volume"></i> اتصل بنا</h3>
-                    <p>+966 123 456 789<br>الدعم الفني: 24/7</p>
-                </div>
-
-                <div class="contact-card">
-                    <h3><i class="fas fa-envelope-open-text"></i> البريد الإلكتروني</h3>
-                    <p>info@novadesign.com<br>sales@novadesign.com</p>
+                
+                <div class="footer-section">
+                    <h3>مواقعنا</h3>
+                    <a href="#"><i class="fab fa-behance"></i> Behance</a>
+                    <a href="#"><i class="fab fa-dribbble"></i> Dribbble</a>
                 </div>
             </div>
-
+            
             <div class="copyright">
-                <p>© 2025 NovaDesign. جميع الحقوق محفوظة</p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-behance"></i></a>
-                </div>
+                <p>© 2024 NexusDesign. جميع الحقوق محفوظة</p>
             </div>
         </footer>
     </main>
 
+    <!-- المكتبات البرمجية -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // تهيئة مكتبة AOS للأنيميشن
+        // تهيئة مكتبة الأنيميشن
         AOS.init({
             duration: 1000,
             once: true
         });
 
-        // تبديل القائمة على الجوال
-        function toggleMenu() {
-            const hamburger = document.querySelector('.hamburger');
-            const navLinks = document.querySelector('.nav-links');
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('nav-active');
+        // تبديل اللغة
+        let currentLang = 'ar';
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.getElementById('mainPage').dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelector('.lang-switch').textContent = currentLang === 'ar' ? 'EN' : 'AR';
         }
-
-        // نظام تبديل اللغات
-        function changeLanguage(lang) {
-            document.documentElement.lang = lang;
-            document.getElementById('mainPage').dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.textContent.toLowerCase() === lang) btn.classList.add('active');
-            });
-        }
-
-        // تأثيرات GSAP
-        gsap.from(".logo-container", {duration: 1, x: -100, opacity: 0});
-        gsap.from(".member-card", {
-            duration: 1,
-            opacity: 0,
-            y: 50,
-            stagger: 0.3,
-            scrollTrigger: {
-                trigger: ".portfolio-section",
-                start: "top center"
-            }
-        });
     </script>
 </body>
-    </html>
+                                                             </html>
