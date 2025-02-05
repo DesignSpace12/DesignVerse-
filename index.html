@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Design Space</title>
-  <!-- استخدام خط "Cairo" من Google Fonts -->
+  <!-- استخدام خطين من Google Fonts: واحد للعناوين والتأثيرات، وآخر للنصوص -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- خط للعناوين مع تأثير جمالي -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <!-- خط للنصوص -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <!-- أيقونات Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,11 +22,10 @@
     }
     body {
       font-family: 'Cairo', sans-serif;
-      /* خلفية بمزيج من الأزرق واللون الأسود مع حركة */
       background: linear-gradient(45deg, #001f3f, #000000);
       background-size: 400% 400%;
       animation: bgAnimation 15s ease infinite;
-      color: #ffffff;
+      color: #fff;
       overflow-x: hidden;
       position: relative;
     }
@@ -31,6 +33,16 @@
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+    /* تأثير على الخطوط عند التفاعل */
+    .glow-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.8rem;
+      transition: text-shadow 0.3s, transform 0.3s;
+    }
+    .glow-text:hover {
+      text-shadow: 0 0 15px #ffcc00, 0 0 20px #ffcc00;
+      transform: scale(1.05);
     }
     header {
       display: flex;
@@ -49,7 +61,8 @@
     }
     header h1 {
       margin-right: 15px;
-      font-size: 2rem;
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.5rem;
       letter-spacing: 2px;
     }
     main {
@@ -59,7 +72,7 @@
       z-index: 1;
     }
     .welcome {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 20px;
       opacity: 0;
       animation: fadeIn 2s forwards;
@@ -80,16 +93,16 @@
     }
     .button-container a {
       display: inline-block;
-      background: #ffffff;
+      background: #fff;
       color: #000;
       padding: 15px 25px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s, transform 0.3s;
+      transition: box-shadow 0.3s, transform 0.3s;
     }
     .button-container a:hover {
-      background: #ffcc00;
+      box-shadow: 0 0 15px #ffcc00, 0 0 20px #ffcc00;
       transform: scale(1.1);
     }
     footer {
@@ -103,6 +116,15 @@
     .contact {
       margin-top: 10px;
     }
+    .contact a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    .contact a:hover {
+      color: #ffcc00;
+    }
     .icon {
       font-size: 1.5rem;
       margin: 0 10px;
@@ -111,7 +133,24 @@
     .icon:hover {
       transform: translateY(-5px);
     }
-    /* عناصر متحركة في الخلفية */
+    /* مجسم ديزاين متحرك في الخلفية */
+    .design-model {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      animation: rotateModel 10s linear infinite;
+      z-index: 0;
+    }
+    @keyframes rotateModel {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    /* عناصر متحركة إضافية في الخلفية */
     .moving-shape {
       position: absolute;
       border-radius: 50%;
@@ -143,6 +182,8 @@
   <!-- عناصر خلفية متحركة -->
   <div class="moving-shape shape1"></div>
   <div class="moving-shape shape2"></div>
+  <!-- مجسم ديزاين متحرك في الخلفية -->
+  <div class="design-model"></div>
   
   <header>
     <!-- شعار الصفحة، تأكد من وجود ملف logo.png في نفس المجلد -->
@@ -152,12 +193,12 @@
   
   <main>
     <!-- رسالة ترحيب مع تأثير يظهر تدريجيًا -->
-    <div class="welcome">أهلا بك أيها المستخدم، كيف نخدمك في أناقة تصميم!</div>
+    <div class="welcome glow-text">أهلا بك أيها المستخدم، كيف نخدمك في أناقة تصميم!</div>
     <div class="content">
       <p>هنا لديك مجموعة ديزاين لخدمتك وتميزك عن غيرك، وجعلك من أفضل المصممين في صناعة التصاميم وتصميم الصفحات.</p>
       <p>استمتع بأفضل تجربة تصميم مع حركات سلسة وتأثيرات تفاعلية تضيف لمسة فنية إلى أعمالك.</p>
     </div>
-    <!-- أزرار تفاعلية مع أيقونات مدورة -->
+    <!-- أزرار تفاعلية مع تأثير توهج -->
     <div class="button-container">
       <a href="#services"><i class="fas fa-palette"></i> خدماتنا</a>
       <a href="#portfolio"><i class="fas fa-briefcase"></i> أعمالنا</a>
@@ -168,12 +209,13 @@
   <footer>
     <p>مواعيد العمل: الأحد - الخميس | من 9 صباحاً حتى 6 مساءً</p>
     <p>حقوق Design Space © 2025</p>
+    <p>الموقع: الجزائر</p>
     <div class="contact">
-      <a href="mailto:contact@designspace.com" style="color: #fff; text-decoration: none;">
+      <a href="mailto:contact@designspace.com">
         <i class="fas fa-envelope icon"></i> contact@designspace.com
       </a>
-      <a href="tel:+1234567890" style="color: #fff; text-decoration: none;">
-        <i class="fas fa-phone icon"></i> +1234567890
+      <a href="tel:+213123456789">
+        <i class="fas fa-phone icon"></i> +213 123 456 789
       </a>
     </div>
   </footer>
@@ -182,7 +224,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function(){
       const welcomeText = document.querySelector('.welcome');
-      // مثال لتأثير تكبير النص بعد ثانية واحدة
+      // تأثير تكبير بسيط بعد ثانية واحدة
       setTimeout(() => {
         welcomeText.style.transform = "scale(1.05)";
         welcomeText.style.transition = "transform 0.5s";
